@@ -1,4 +1,4 @@
-package model;
+package model.shell;
 
 import static org.junit.Assert.assertEquals;
 
@@ -15,13 +15,13 @@ public class ShellRunnerTest{
     @Test
     public void rightTest(){
         var rightRet = runner.run("whoami");
-        assertEquals(rightRet.errorOccur, false);
-        assertEquals(rightRet.ret, "jessy");
+        assertEquals(rightRet.isErrorOccur(), false);
+        assertEquals(rightRet.getRet(), "jessy");
     }
 
     @Test
     public void wrongTest(){
         var wrongRet = runner.run("whioaaa");
-        assertEquals(wrongRet.errorOccur, true);
+        assertEquals(wrongRet.isErrorOccur(), true);
     }
 }
