@@ -14,13 +14,13 @@ public class ShellRunnerTest{
 
     @Test
     public void rightTest(){
-        var rightRet = runner.run("whoami");
+        var rightRet = runner.run("whoami", "");
         assertEquals(rightRet.isErrorOccur(), false);
     }
 
     @Test
     public void wrongTest(){
-        var wrongRet = runner.run("whioaaa");
+        var wrongRet = runner.run("whioaaa", "");
         assertEquals(wrongRet.isErrorOccur(), true);
     }
 }
