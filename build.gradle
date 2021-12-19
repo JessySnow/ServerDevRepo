@@ -1,5 +1,5 @@
 plugins{
-    id ('java')
+    id 'java'
 }
 
 repositories {
@@ -7,11 +7,29 @@ repositories {
 }
 
 dependencies {
-    testImplementation('junit:junit:4.13')
-    compileOnly('javax.servlet:javax.servlet-api:3.0.1')
+    testImplementation 'junit:junit:4.13'
+    compileOnly 'javax.servlet:javax.servlet-api:3.0.1'
 }
 
 // config my tasks
 test{
     useJUnit()
+}
+
+// shutdown tomcat
+task SOTT(type:Exec){
+    workingDir '/home/jessy/tomcat9/bin'
+    commandLine './shutdown.sh'
+}
+
+// startup tomcat
+task SATT(type:Exec){
+    workingDir '/home/jessy/tomcat9/bin'
+    commandLine './startup.sh'
+}
+
+// deploy generated class and static resources to tomcat container
+task DPTT(type:Copy){
+    from 'build/classes/java/main/'
+    into '/home/jessy/tomcat9/webapps/server/WEB-INF'
 }
