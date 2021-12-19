@@ -1,8 +1,16 @@
+<%@ page import="model.shell.ShellRunner" %>
+<%@ page import="model.shell.ShellRet" %>
+
 <html>
     <meta charset=utf-8" />
     <body>
-        <h1>-----------------------------------------------------------------</h1>
-        <h2><span>|非闲置进程列表|</span><span>|占用CPU最高的进程(前三)|</span><span>|占用内存最高的进程(前三)|</span></h2>
-        <h1>-----------------------------------------------------------------</h1>
+        <h1>Hello World!</h1>
+        <%
+            ShellRunner runner = new ShellRunner();
+            ShellRet ret = runner.run("ps");
+            out.print("<h1>");
+            out.println(ret.getRet());
+            out.print("</h1>");
+        %>
     </body>
 </html>

@@ -16,34 +16,40 @@ test{
     useJUnit()
 }
 
-// shutdown tomcat
-task SOTT(type:Exec){
-    workingDir '/home/jessy/tomcat9/bin'
-    commandLine './shutdown.sh'
+task DETT(type: Delete) {
+  delete '/home/jessy/tomcat9/webapps/server'
+  followSymlinks = true
 }
 
-// startup tomcat
-task SATT(type:Exec){
-    workingDir '/home/jessy/tomcat9/bin'
-    commandLine './startup.sh'
-}
-
-// restart tomcat
-task RSTT{
-    doLast{
+// deploy generated class and static resources to tomcat container
+// version 1.0
+task DPTT(dependsOn: 'build'){
+    // Clean up previous deployment and shutdown tomcat
+    doFirst{
         exec{
             workingDir '/home/jessy/tomcat9/bin'
             commandLine './shutdown.sh'
         }
+    }
+    
+    // copy new webapps
+    copy{
+        from 'build/classes/java/main/'
+        into '/home/jessy/tomcat9/webapps/server/WEB-INF/classes'
+    }
+    copy{
+        from 'build/resources/main/index.jsp'
+        into '/home/jessy/tomcat9/webapps/server'
+    }
+    copy{
+        from 'build/resources/main/etc/web.xml'
+        into '/home/jessy/tomcat9/webapps/server/WEB-INF'
+    }
+    // restart tomcat
+    doLast{
         exec{
             workingDir '/home/jessy/tomcat9/bin'
             commandLine './startup.sh'
         }
     }
-}
-
-// deploy generated class and static resources to tomcat container
-task DPTT(type:Copy, dependsOn: 'build'){
-    from 'build/classes/java/main/'
-    into '/home/jessy/tomcat9/webapps/server/WEB-INF'
 }

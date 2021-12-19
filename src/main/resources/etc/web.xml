@@ -5,12 +5,7 @@
                       http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
   version="4.0"
   metadata-complete="true">
-  <context-param>
-    <param-name>myemail</param-name>
-    <param-value>jessysnow12345@gmail.com</param-value>
-  </context-param>
-
-    <servlet>
+    <!-- <servlet>
       <servlet-name>indexServlet</servlet-name>
       <servlet-class>model.web.IndexServlet</servlet-class>
     </servlet>
@@ -18,5 +13,5 @@
     <servlet-mapping>
       <servlet-name>indexServlet</servlet-name>
       <url-pattern>/</url-pattern>
-    </servlet-mapping>
+    </servlet-mapping> -->
 </web-app>
