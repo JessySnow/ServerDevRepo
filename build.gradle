@@ -28,8 +28,22 @@ task SATT(type:Exec){
     commandLine './startup.sh'
 }
 
+// restart tomcat
+task RSTT{
+    doLast{
+        exec{
+            workingDir '/home/jessy/tomcat9/bin'
+            commandLine './shutdown.sh'
+        }
+        exec{
+            workingDir '/home/jessy/tomcat9/bin'
+            commandLine './startup.sh'
+        }
+    }
+}
+
 // deploy generated class and static resources to tomcat container
-task DPTT(type:Copy){
+task DPTT(type:Copy, dependsOn: 'build'){
     from 'build/classes/java/main/'
     into '/home/jessy/tomcat9/webapps/server/WEB-INF'
 }
