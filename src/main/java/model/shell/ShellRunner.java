@@ -45,7 +45,7 @@ public class ShellRunner{
                 var errorStream = rt.exec(command).getErrorStream();
                 var reader = new BufferedReader(new InputStreamReader(errorStream, StandardCharsets.UTF_8));
                 while((line = reader.readLine()) != null)
-                    retSb.append(line);
+                    retSb.append(line + "\n");
                 
                 errorStream.close();
                 reader.close();

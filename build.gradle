@@ -1,3 +1,7 @@
+// Tomcat gradle deployment script
+// version 1.0
+// author jessysnow
+
 plugins{
     id 'java'
 }
@@ -22,7 +26,6 @@ task DETT(type: Delete) {
 }
 
 // deploy generated class and static resources to tomcat container
-// version 1.0
 task DPTT(dependsOn: 'build'){
     // Clean up previous deployment and shutdown tomcat
     doFirst{
