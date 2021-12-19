@@ -5,13 +5,23 @@
                       http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
   version="4.0"
   metadata-complete="true">
-    <!-- <servlet>
-      <servlet-name>indexServlet</servlet-name>
-      <servlet-class>model.web.IndexServlet</servlet-class>
+    <servlet>
+      <servlet-name>killServlet</servlet-name>
+      <servlet-class>web.killServlet</servlet-class>
     </servlet>
+    <servlet>
+      <servlet-name>indexServlet</servlet-name>
+      <servlet-class>web.IndexServlet</servlet-class>
+    </servlet>
+    
 
     <servlet-mapping>
+      <servlet-name>killServlet</servlet-name>
+      <url-pattern>/killProcess</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
       <servlet-name>indexServlet</servlet-name>
-      <url-pattern>/</url-pattern>
-    </servlet-mapping> -->
+      <url-pattern>/index</url-pattern>
+    </servlet-mapping>
+    
 </web-app>
