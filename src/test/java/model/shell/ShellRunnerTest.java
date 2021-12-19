@@ -16,7 +16,6 @@ public class ShellRunnerTest{
     public void rightTest(){
         var rightRet = runner.run("whoami");
         assertEquals(rightRet.isErrorOccur(), false);
-        assertEquals(rightRet.getRet(), "jessy");
     }
 
     @Test

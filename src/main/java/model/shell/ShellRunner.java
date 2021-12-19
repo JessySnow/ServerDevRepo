@@ -32,7 +32,7 @@ public class ShellRunner{
             var inputStream = rt.exec(command).getInputStream();
             var reader = new BufferedReader(new InputStreamReader(inputStream, StandardCharsets.UTF_8));
             while((line = reader.readLine()) != null)
-                retSb.append(line);
+                retSb.append(line + "<br>");
             
             errorOccur = false;
             
@@ -45,7 +45,7 @@ public class ShellRunner{
                 var errorStream = rt.exec(command).getErrorStream();
                 var reader = new BufferedReader(new InputStreamReader(errorStream, StandardCharsets.UTF_8));
                 while((line = reader.readLine()) != null)
-                    retSb.append(line + "\n");
+                    retSb.append(line + "<br>");
                 
                 errorStream.close();
                 reader.close();
