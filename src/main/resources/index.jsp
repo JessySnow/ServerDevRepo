@@ -7,7 +7,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
     <body>
-        <h2>|非闲置进程列表|</h2>
+        <h2>|非闲置进程列表|CPU占用前三|内存占用前三|</h2>
         <%
             response.setIntHeader("Refresh", 5);
             ShellRet ret = new ShellRunner().run("top -b -n 1", new TopProcessor("<br>"));
