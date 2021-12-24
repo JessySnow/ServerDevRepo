@@ -48,6 +48,10 @@ task DPTT(dependsOn: 'build'){
         from 'build/resources/main/etc/web.xml'
         into '/home/jessy/tomcat9/webapps/server/WEB-INF'
     }
+    copy{
+        from 'build/resources/main/css'
+        into '/home/jessy/tomcat9/webapps/server/css'
+    }
     // restart tomcat
     doLast{
         exec{

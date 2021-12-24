@@ -1,6 +1,5 @@
 package model.stringprocessor;
 
-
 /**
  * 处理 top 命令
  */
@@ -19,7 +18,7 @@ public class TopProcessor extends BaseProcessor{
 
         String[] strList = str.trim().replace(" +", " ").split(" ");
         String formDemo = "<form method='post' action='killProcess'><input style='border:none' type='text' name=pid value=%s> %s <input type='submit' value=kill></form>";
-        String form =  String.format(formDemo, strList[0], strList[strList.length - 1]);
+        String form =  String.format(formDemo, strList[0], strList[strList.length - 1]);    //strList[0],strList[strList.length-1]分别对应pid和pname
         return form;
     }
 }
