@@ -13,8 +13,8 @@ public class cpuCompartor implements Comparator<MyProcess>{
     */
     @Override
     public int compare(MyProcess myProcess1, MyProcess myProcess2){
-        if(myProcess1.cpuUsage > myProcess2.cpuUsage) return 1;
-        else if(myProcess1.cpuUsage < myProcess2.cpuUsage) return -1;
+        if(myProcess1.cpuUsage > myProcess2.cpuUsage) return -1;
+        else if(myProcess1.cpuUsage < myProcess2.cpuUsage) return 1;
         else return myProcess1.processName.compareTo(myProcess2.processName);
     }
 }

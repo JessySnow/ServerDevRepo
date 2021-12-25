@@ -9,7 +9,7 @@
     <body>
         <h2>|非闲置进程列表|CPU占用前三|内存占用前三|</h2>
         
-        <div id=allprocess>
+        <div id=allprocess style="float: left">
         <%
             response.setIntHeader("Refresh", 5);
             ShellRet ret = new ShellRunner().run("top -b -n 1", new TopProcessor("<br>"));
@@ -17,10 +17,20 @@
         %>
         </div>
 
-        <div id=cpuprocess>
+        <%
+            ShellRet[] rets = new ShellRunner().runs("top -b -n 1");
+        %>
+
+        <div id=cpuprocess style="float: left;">
+            <%
+                out.println(rets[0].getRet());
+            %>
         </div>
 
-        <div id=memprocess>
+        <div id=memprocess style="float: left;">
+            <%
+                out.println(rets[1].getRet());
+            %>
         </div>
         
     </body>

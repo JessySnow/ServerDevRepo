@@ -18,6 +18,16 @@ public class ShellRet{
         this.errorOccur = errorOccur;
     }
 
+    
+    /**
+     * @param ret Process输入流或者错误流的结果
+     * @param errorOccur 是否发生了错误的标志位
+     */
+    protected ShellRet(){
+        this.ret = "";
+        this.errorOccur = false;
+    }
+
     public String getRet(){
         return this.ret;
     };

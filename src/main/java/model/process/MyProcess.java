@@ -22,4 +22,9 @@ public class MyProcess {
         this.cpuUsage = cpuUsage;
         this.memUsage = memUsage;
     }
+
+    @Override
+    public String toString(){
+        return "ProcessName: " + processName + ", PrcessCPUUsage: " + cpuUsage + ", ProcessMEMUsage: " + memUsage; 
+    }
 }

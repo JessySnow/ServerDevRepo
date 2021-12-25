@@ -16,7 +16,7 @@ public class TopProcessor extends BaseProcessor{
         // 过滤掉top的表头，和 top 自身产生的 process
         if(lineIndex ++ <= 6 || str.contains("top")) return "";
 
-        String[] strList = str.trim().replace(" +", " ").split(" ");
+        String[] strList = str.trim().replaceAll("\\s+", " ").split(" ");
         String formDemo = "<form method='post' action='killProcess'><input style='border:none' type='text' name=pid value=%s> %s <input type='submit' value=kill></form>";
         String form =  String.format(formDemo, strList[0], strList[strList.length - 1]);    //strList[0],strList[strList.length-1]分别对应pid和pname
         return form;

@@ -13,8 +13,8 @@ public class memComprator implements Comparator<MyProcess>{
    */
    @Override
    public int compare(MyProcess myProcess1, MyProcess myProcess2){
-       if(myProcess1.memUsage > myProcess2.memUsage) return 1;
-       else if(myProcess1.memUsage < myProcess2.memUsage) return -1;
+       if(myProcess1.memUsage > myProcess2.memUsage) return -1;
+       else if(myProcess1.memUsage < myProcess2.memUsage) return 1;
        else return myProcess1.processName.compareTo(myProcess2.processName);
    }
 }
