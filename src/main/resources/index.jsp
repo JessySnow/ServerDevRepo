@@ -5,7 +5,7 @@
 
 <html>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <!-- <head rel="stylesheet" type="text/css" href=".css/index.css"></head> -->
+    <link rel="stylesheet" type="text/css" href="./css/index.css"/>
     <body>
         <h2>|非闲置进程列表|CPU占用前三|内存占用前三|</h2>
         
