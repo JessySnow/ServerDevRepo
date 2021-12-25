@@ -1,6 +1,5 @@
 package model.process;
 
-import java.util.Comparator;
 
 /**
  * 定义的进程信息类，存放对应进程的内存、CPU占用率、进程名称
