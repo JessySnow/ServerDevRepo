@@ -20,17 +20,24 @@ test{
     useJUnit()
 }
 
+def userName = 'jessy'
+def appName = 'server'
+def tomcatHome = '/home/'+ userName +'/tomcat9'
+def tomcatBin = tomcatHome+ '/bin'
+def tomcatApp = tomcatHome+ '/webapps/' + appName
+
 task DETT(type: Delete) {
-  delete '/home/jessy/tomcat9/webapps/server'
+  delete tomcatApp
   followSymlinks = true
 }
 
 // deploy generated class and static resources to tomcat container
 task DPTT(dependsOn: 'build'){
+
     // Clean up previous deployment and shutdown tomcat
     doFirst{
         exec{
-            workingDir '/home/jessy/tomcat9/bin'
+            workingDir tomcatBin
             commandLine './shutdown.sh'
         }
     }
@@ -38,24 +45,28 @@ task DPTT(dependsOn: 'build'){
     // copy new webapps
     copy{
         from 'build/classes/java/main/'
-        into '/home/jessy/tomcat9/webapps/server/WEB-INF/classes'
+        into tomcatApp + '/WEB-INF/classes'
     }
+    // copy index.jsp
     copy{
         from 'build/resources/main/index.jsp'
-        into '/home/jessy/tomcat9/webapps/server'
+        into tomcatApp
     }
+    // copy web.xml
     copy{
         from 'build/resources/main/etc/web.xml'
-        into '/home/jessy/tomcat9/webapps/server/WEB-INF'
+        into tomcatApp + '/WEB-INF'
     }
+    // copy css
     copy{
         from 'build/resources/main/css'
-        into '/home/jessy/tomcat9/webapps/server/css'
+        into tomcatApp + '/css';
     }
+    
     // restart tomcat
     doLast{
         exec{
-            workingDir '/home/jessy/tomcat9/bin'
+            workingDir tomcatBin
             commandLine './startup.sh'
         }
     }
