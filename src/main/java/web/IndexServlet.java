@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 import javax.servlet.http.*;
-import model.shell.ShellRunner;
 
 public class IndexServlet extends HttpServlet{
     
